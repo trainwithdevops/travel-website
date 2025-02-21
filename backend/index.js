@@ -1,16 +1,24 @@
-const express = require('express');
-const sequelize = require('./config/database');
-const cors = require('cors');
-const helmet = require('helmet');
-const csurf = require('csurf');
-const cookieParser = require('cookie-parser');
-const userRoutes = require('./routes/userRoutes');
-const blogRoutes = require('./routes/blogRoutes');
-const memberRoutes = require('./routes/memberRoutes');
-const messageRoutes = require('./routes/messageRoutes');
-const notificationRoutes = require('./routes/notificationRoutes');
-const tripRoutes = require('./routes/tripRoutes');
-require('dotenv').config();
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+import express from 'express';
+import sequelize from './config/database';
+import cors from 'cors';
+import helmet from 'helmet';
+import csurf from 'csurf';
+import cookieParser from 'cookie-parser';
+import userRoutes from './routes/userRoutes';
+import blogRoutes from './routes/blogRoutes';
+import memberRoutes from './routes/memberRoutes';
+import messageRoutes from './routes/messageRoutes';
+import notificationRoutes from './routes/notificationRoutes';
+import tripRoutes from './routes/tripRoutes';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -41,3 +49,10 @@ sequelize.sync().then(() => {
         console.log(`Server running on port ${port}`);
     });
 });
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);
