@@ -7,6 +7,8 @@ import Blog from './pages/Blog';
 import FindMembers from './pages/FindMembers';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import Messages from './components/Messages';
 import Navbar from './components/Navbar';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -22,6 +24,8 @@ function App() {
                 <Route path="/signup" component={Signup} />
                 <PrivateRoute path="/blog" component={Blog} />
                 <PrivateRoute path="/find-members" component={FindMembers} />
+                <PrivateRoute path="/profile" component={Profile} />
+                <PrivateRoute path="/messages" component={Messages} />
             </Switch>
         </Router>
     );
