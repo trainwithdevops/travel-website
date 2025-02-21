@@ -1,29 +1,38 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 
 const Navbar = () => {
     const user = useSelector((state) => state.user);
 
     return (
-        <nav>
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about-us">About Us</Link></li>
-                <li><Link to="/contact-us">Contact Us</Link></li>
+        <AppBar position="static">
+            <Toolbar>
+                <Typography variant="h6" style={{ flexGrow: 1 }}>
+                    Travel Community
+                </Typography>
+                <Button color="inherit" component={Link} to="/">Home</Button>
+                <Button color="inherit" component={Link} to="/about-us">About Us</Button>
+                <Button color="inherit" component={Link} to="/contact-us">Contact Us</Button>
                 {user ? (
                     <>
-                        <li><Link to="/blog">Blog</Link></li>
-                        <li><Link to="/find-members">Find Members</Link></li>
+                        <Button color="inherit" component={Link} to="/blog">Blog</Button>
+                        <Button color="inherit" component={Link} to="/find-members">Find Members</Button>
+                        <Button color="inherit" component={Link} to="/profile">Profile</Button>
+                        <Button color="inherit" component={Link} to="/messages">Messages</Button>
+                        <Button color="inherit" component={Link} to="/notifications">Notifications</Button>
+                        <Button color="inherit" component={Link} to="/trip-planner">Trip Planner</Button>
+                        <Button color="inherit" component={Link} to="/group-trips">Group Trips</Button>
                     </>
                 ) : (
                     <>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/signup">Signup</Link></li>
+                        <Button color="inherit" component={Link} to="/login">Login</Button>
+                        <Button color="inherit" component={Link} to="/signup">Signup</Button>
                     </>
                 )}
-            </ul>
-        </nav>
+            </Toolbar>
+        </AppBar>
     );
 };
 
