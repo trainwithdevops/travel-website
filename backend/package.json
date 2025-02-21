@@ -1,0 +1,17 @@
+{
+  "name": "travel-community-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^6.6.2",
+    "mysql2": "^2.2.5",
+    "jsonwebtoken": "^8.5.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "helmet": "^4.6.0",
+    "csurf": "^1.11.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0"
+  }
+}
