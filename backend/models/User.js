@@ -17,6 +17,12 @@ const UserSchema = new mongoose.Schema({
     googleId: {
         type: String,
     },
+    profile: {
+        bio: { type: String },
+        location: { type: String },
+        languages: { type: [String] },
+        destinations: { type: [String] },
+    },
 }, {
     timestamps: true,
 });
