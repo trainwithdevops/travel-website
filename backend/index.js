@@ -4,6 +4,9 @@ const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const blogRoutes = require('./routes/blogRoutes');
 const memberRoutes = require('./routes/memberRoutes');
+const messageRoutes = require('./routes/messageRoutes');
+const notificationRoutes = require('./routes/notificationRoutes');
+const tripRoutes = require('./routes/tripRoutes');
 require('dotenv').config();
 
 const app = express();
@@ -22,6 +25,9 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/api/users', userRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/members', memberRoutes);
+app.use('/api/messages', messageRoutes);
+app.use('/api/notifications', notificationRoutes);
+app.use('/api/trips', tripRoutes);
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
