@@ -1,5 +1,5 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const sequelize = require('./config/database');
 const cors = require('cors');
 const helmet = require('helmet');
 const csurf = require('csurf');
@@ -22,13 +22,6 @@ app.use(cookieParser());
 
 const csrfProtection = csurf({ cookie: true });
 
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
-
 app.use('/api/users', userRoutes);
 app.use('/api/blogs', blogRoutes);
 app.use('/api/members', memberRoutes);
@@ -42,6 +35,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+sequelize.sync().then(() => {
+    console.log('Database synced');
+    app.listen(port, () => {
+        console.log(`Server running on port ${port}`);
+    });
 });
