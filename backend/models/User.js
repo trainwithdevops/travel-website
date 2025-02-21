@@ -22,7 +22,14 @@ const UserSchema = new mongoose.Schema({
         location: { type: String },
         languages: { type: [String] },
         destinations: { type: [String] },
+        profilePicture: { type: String },
+        socialLinks: {
+            facebook: { type: String },
+            twitter: { type: String },
+            instagram: { type: String },
+        },
     },
+    badges: { type: [String] },
 }, {
     timestamps: true,
 });
