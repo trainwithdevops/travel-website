@@ -18,12 +18,14 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './themes/theme';
 import './i18n';
 import { useTranslation } from 'react-i18next';
+import { CssBaseline } from '@material-ui/core';
 
 function App() {
     const { t } = useTranslation();
 
     return (
         <ThemeProvider theme={theme}>
+            <CssBaseline />
             <Router>
                 <Navbar />
                 <Switch>
